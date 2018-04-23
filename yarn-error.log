@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/bin/yarn add webpack-cli
+  /usr/local/bin/node /usr/local/bin/yarn add moment
 
 PATH: 
   /Library/Frameworks/Python.framework/Versions/3.6/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Frameworks/Python.framework/Versions/3.6/bin
@@ -26,8 +26,8 @@ npm manifest:
       "build:prod": "webpack -p --env production",
       "dev-server": "webpack-dev-server",
       "test": "jest",
-      "start" : "node server/server.js",
-      "heroku-postbuild" : "yarn run build:prod"
+      "start": "node server/server.js",
+      "heroku-postbuild": "yarn run build:prod"
     },
     "dependencies": {
       "babel-cli": "^6.26.0",
@@ -55,7 +55,12 @@ npm manifest:
       "uuid": "^3.2.1",
       "validator": "^9.4.1",
       "webpack": "^4.4.1",
+      "webpack-cli": "^2.0.15",
       "webpack-dev-server": "^3.1.1"
+    }
+    ,
+    "engines": {
+      "node": "9.8.0"
     }
   }
 
@@ -2405,6 +2410,10 @@ Lockfile:
       graceful-fs "^4.1.2"
       memory-fs "^0.4.0"
       tapable "^1.0.0"
+  
+  envinfo@^4.4.2:
+    version "4.4.2"
+    resolved "https://registry.yarnpkg.com/envinfo/-/envinfo-4.4.2.tgz#472c49f3a8b9bca73962641ce7cb692bf623cd1c"
   
   errno@^0.1.3, errno@~0.1.7:
     version "0.1.7"
@@ -7719,17 +7728,19 @@ Lockfile:
     dependencies:
       jscodeshift "^0.4.0"
   
-  webpack-cli@^2.0.13:
-    version "2.0.13"
-    resolved "https://registry.yarnpkg.com/webpack-cli/-/webpack-cli-2.0.13.tgz#6e2bd9ef91345344737217e22e29001ad8537518"
+  webpack-cli@^2.0.15:
+    version "2.0.15"
+    resolved "https://registry.yarnpkg.com/webpack-cli/-/webpack-cli-2.0.15.tgz#7532066556b03bd3292285ac08537e28844616c2"
     dependencies:
       chalk "^2.3.2"
       cross-spawn "^6.0.5"
       diff "^3.5.0"
       enhanced-resolve "^4.0.0"
+      envinfo "^4.4.2"
       glob-all "^3.1.0"
       global-modules "^1.0.0"
       got "^8.2.0"
+      import-local "^1.0.0"
       inquirer "^5.1.0"
       interpret "^1.0.4"
       jscodeshift "^0.5.0"
@@ -7741,11 +7752,10 @@ Lockfile:
       p-each-series "^1.0.0"
       p-lazy "^1.0.0"
       prettier "^1.5.3"
-      resolve-cwd "^2.0.0"
       supports-color "^5.3.0"
       v8-compile-cache "^1.1.2"
       webpack-addons "^1.1.5"
-      yargs "^11.0.0"
+      yargs "^11.1.0"
       yeoman-environment "^2.0.0"
       yeoman-generator "^2.0.3"
   
@@ -8026,9 +8036,9 @@ Lockfile:
       y18n "^3.2.1"
       yargs-parser "^8.1.0"
   
-  yargs@^11.0.0:
-    version "11.0.0"
-    resolved "https://registry.yarnpkg.com/yargs/-/yargs-11.0.0.tgz#c052931006c5eee74610e5fc0354bedfd08a201b"
+  yargs@^11.1.0:
+    version "11.1.0"
+    resolved "https://registry.yarnpkg.com/yargs/-/yargs-11.1.0.tgz#90b869934ed6e871115ea2ff58b03f4724ed2d77"
     dependencies:
       cliui "^4.0.0"
       decamelize "^1.1.1"
@@ -8125,4 +8135,4 @@ Lockfile:
       yeoman-environment "^2.0.5"
 
 Trace: 
-  Error: EACCES: permission denied, unlink '/Users/sujanshrestha/Desktop/REACT COURSE PROJECTS/expensify-app/node_modules/node-notifier/vendor/terminal-notifier.app/Contents/Info.plist'
+  Error: EACCES: permission denied, unlink '/Users/sujanshrestha/Desktop/REACT COURSE PROJECTS/expensify-app/node_modules/.bin/acorn'
