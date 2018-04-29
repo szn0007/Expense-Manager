@@ -12,7 +12,6 @@ class ExpenseListFilters extends React.Component {
     this.props.dispatch(setStartDate(startDate));
   };
 
-
   handleChangeEnd = ( endDate ) => {
     this.props.dispatch(setEndDate(endDate));
   };
@@ -21,7 +20,7 @@ class ExpenseListFilters extends React.Component {
     return (
       <div>
         <input type = "text" value = {this.props.filters.text} onChange = {(e) => {
-            props.dispatch(setTextFilter(e.target.value))
+            this.props.dispatch(setTextFilter(e.target.value))
           }}/>
         <select value = {this.props.filters.sortBy} onChange = {(e) => {
 
