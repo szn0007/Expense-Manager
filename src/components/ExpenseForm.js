@@ -63,26 +63,25 @@ export default class ExpenseForm extends React.Component{
 
   render(){
     return (
-      <div>
-        {this.state.error}
-        <form onSubmit = {this.onSubmit}>
+        <form className = "form" onSubmit = {this.onSubmit}>
+          {this.state.error && <p className = "form__error">{this.state.error}</p>}
           <input type = "text" placeholder = "Description" value = {this.state.description}
-             onChange = {this.onDescriptionChange} autoFocus/>
+             onChange = {this.onDescriptionChange} autoFocus className = "text-input"/>
 
-          <input type = "text" placeholder = "Amount" value = {this.state.amount}
+          <input type = "text" placeholder = "Amount" value = {this.state.amount} className = "text-input"
             onChange = {this.onAmountChange} />
 
-            <DatePicker
+            <DatePicker  className = "date-picker"
               selected = {this.state.createdAt}
               onChange = {this.onDateChange}
               />
-          <textarea placeholder = "Add a note for your expense (OPTIONAL)"
+            <textarea className = "textarea" placeholder = "Add a note for your expense (OPTIONAL)"
             value = {this.state.note} onChange = {this.onNoteChange}>
           </textarea>
-
-          <button>Add Expense</button>
+          <div>
+          <button className = "button">Save Expense</button>
+          </div>
         </form>
-      </div>
     );
   };
 };

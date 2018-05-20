@@ -4,9 +4,7 @@ import DatePicker from 'react-datepicker';
 import { setTextFilter, sortByAmount, sortByDate, setStartDate, setEndDate } from '../action/filters';
 
 class ExpenseListFilters extends React.Component {
-  state = {
-
-  };
+  state = {};
 
   handleChangeStart = (startDate) => {
     this.props.dispatch(setStartDate(startDate));
@@ -18,42 +16,51 @@ class ExpenseListFilters extends React.Component {
 
   render(){
     return (
-      <div>
-        <input type = "text" value = {this.props.filters.text} onChange = {(e) => {
-            this.props.dispatch(setTextFilter(e.target.value))
-          }}/>
-        <select value = {this.props.filters.sortBy} onChange = {(e) => {
+      <div className= "content-container">
+        <div className = "input-group">
+          <div className = "input-group__item">
+            <input className = "text-input"
+              placeholder = "Search Expenses"
+              type = "text" value = {this.props.filters.text} onChange = {(e) => {
+                this.props.dispatch(setTextFilter(e.target.value))
+              }}/>
+          </div>
+          <div className = "input-group__item">
+            <select className = "select" value = {this.props.filters.sortBy} onChange = {(e) => {
 
-              if(e.target.value === 'date')
-              {
-                 this.props.dispatch(sortByDate());
-              }
-              else if(e.target.value === 'amount')
-              {
-                 this.props.dispatch(sortByAmount());
-              }
-          }}>
-          <option value = "date">Date</option>
-          <option value = "amount">Amount</option>
-        </select>
+                  if(e.target.value === 'date')
+                  {
+                     this.props.dispatch(sortByDate());
+                  }
+                  else if(e.target.value === 'amount')
+                  {
+                     this.props.dispatch(sortByAmount());
+                  }
+              }}>
+              <option value = "date">Date</option>
+              <option value = "amount">Amount</option>
+            </select>
+          </div>
+          <div className = "input-group__item">
+            <span>
+            <DatePicker className = "date-picker"
+            selected={this.props.filters.startDate}
+            selectsStart
+            startDate={this.props.filters.startDate}
+            endDate={this.props.filters.endDate}
+            onChange={this.handleChangeStart}
+            />
 
-        <DatePicker
-        selected={this.props.filters.startDate}
-        selectsStart
-        startDate={this.props.filters.startDate}
-        endDate={this.props.filters.endDate}
-        onChange={this.handleChangeStart}
-        />
-
-        <DatePicker
-        selected={this.props.filters.endDate}
-        selectsEnd
-        startDate={this.props.filters.startDate}
-        endDate={this.props.filters.endDate}
-        onChange={this.handleChangeEnd}
-        />
-
-
+            <DatePicker className = "date-picker"
+            selected={this.props.filters.endDate}
+            selectsEnd
+            startDate={this.props.filters.startDate}
+            endDate={this.props.filters.endDate}
+            onChange={this.handleChangeEnd}
+            />
+            </span>
+          </div>
+        </div>
       </div>
     );
   }

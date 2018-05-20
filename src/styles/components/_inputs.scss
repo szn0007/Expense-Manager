@@ -1,0 +1,22 @@
+.text-input{
+  border: 1px solid #cacccd;
+  height: 50px;
+  padding: $s-size;
+  font-size: $font-size-large;
+  font-weight: 300;
+}
+
+.select{
+  @extend .text-input;
+}
+
+.date-picker{
+  @extend .text-input;
+  margin-right: 3px;
+}
+
+.textarea{
+  @extend .text-input;
+  height: 10rem;
+
+}

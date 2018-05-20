@@ -8,6 +8,7 @@ import {login , logout} from './action/auth';
 import getVisibleExpenses from './selectors/expenses';
 import './styles/style.scss';
 import { firebase } from './firebase/firebase';
+import LoadingPage from './components/LoadingPage';
 
 const store = configureStore();
 
@@ -25,12 +26,13 @@ const renderApp = () => {
   }
 };
 
-ReactDOM.render(<p>Loading...</p>, document.getElementById('app'));
+ReactDOM.render(<LoadingPage />, document.getElementById('app'));
 
 
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     // console.log('Logged In');
+    console.log(user.uid);
     store.dispatch(login(user.uid));
     store.dispatch(startSetExpenses()).then(() => {
     renderApp();
