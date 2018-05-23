@@ -43,7 +43,7 @@ const ExpenseListItem = ({ id, description, amount, createdAt }) => (
       </div>
 
       <div className = "list-item__data">
-          {numeral(amount / 100).format('$0,0.00')}
+          {numeral(amount).format('$0,0.00')}
       </div>
     </Link>
 );

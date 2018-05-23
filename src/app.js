@@ -4,6 +4,7 @@ import AppRouter , { history } from './routers/AppRouter';
 import { Provider } from 'react-redux';
 import configureStore from './store/configureStore';
 import { startSetExpenses } from './action/expenses';
+import { startSetIncome } from './action/income';
 import {login , logout} from './action/auth';
 import getVisibleExpenses from './selectors/expenses';
 import './styles/style.scss';
@@ -28,17 +29,18 @@ const renderApp = () => {
 
 ReactDOM.render(<LoadingPage />, document.getElementById('app'));
 
-
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     // console.log('Logged In');
     console.log(user.uid);
     store.dispatch(login(user.uid));
     store.dispatch(startSetExpenses()).then(() => {
-    renderApp();
-    if(history.location.pathname === '/'){
-      history.push('/dashboard');
-    }
+      store.dispatch(startSetIncome()).then(() => {
+        renderApp();
+        if(history.location.pathname === '/'){
+          history.push('/dashboard');
+        }
+      });  
     });
   } else {
     // console.log('Logged Out!');

@@ -1,0 +1,23 @@
+.tooltip {
+    position: relative;
+}
+
+.tooltip .tooltiptext {
+    font-size: $s-size;
+    visibility: hidden;
+    width: 100px;
+    background: $grey;
+    color: $off-white;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    margin-left: 4px;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
