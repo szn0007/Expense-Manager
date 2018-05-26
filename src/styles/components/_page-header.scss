@@ -1,7 +1,7 @@
 .page-header{
   background: $off-white;
   margin-bottom: $l-size;
-  padding: $l-size 0;
+  padding: $m-size 0;
 }
 
 .page-header__actions{
@@ -17,4 +17,20 @@
   span{
     font-weight: 700;
   }
+}
+
+.page-header__summary{
+  float: right;
+}
+
+.page-header__list li{
+  list-style: none;
+}
+
+.page-header__list li span{
+  font-weight: bold;
+}
+
+.page-header__list li strong{
+  color: red;
 }

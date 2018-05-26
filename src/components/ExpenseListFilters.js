@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import DatePicker from 'react-datepicker';
-import { setTextFilter, sortByAmount, sortByDate, setStartDate, setEndDate } from '../action/filters';
+import { setTextFilter, sortByAmount, sortByDate, setStartDate, setEndDate, resetFilter } from '../action/filters';
 
 class ExpenseListFilters extends React.Component {
   state = {};
@@ -59,6 +59,12 @@ class ExpenseListFilters extends React.Component {
             onChange={this.handleChangeEnd}
             />
             </span>
+          </div>
+          <div className = "input-group__item">
+            <button className= "input-group__button" onClick = {(e) => {
+              this.props.dispatch(setTextFilter(''));
+              this.props.dispatch(sortByDate());
+            }}>Reset Filters</button>
           </div>
         </div>
       </div>
