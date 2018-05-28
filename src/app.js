@@ -40,7 +40,7 @@ firebase.auth().onAuthStateChanged((user) => {
         if(history.location.pathname === '/'){
           history.push('/dashboard');
         }
-      });  
+      });
     });
   } else {
     // console.log('Logged Out!');
