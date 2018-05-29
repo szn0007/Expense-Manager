@@ -6,11 +6,11 @@ import moment from 'moment';
 
 
 const Chart = (props) => {
-  console.log(props.expenses);
+  // console.log(props.expenses);
 //   const amount = props.expenses.map((expense) => {
 //     // console.log(expense.amount);
 //     // console.log(moment(expense.createdAt).format('MMMM'));
-//     return expense.amount;
+//     return ;
 //   });
 // console.log(amount);
 //
@@ -30,9 +30,26 @@ let reducedValue = props.expenses.reduce((acc, item) => {
     }
     return acc;
 }, []);
+console.log(reducedValue);
+
+
+function compare(a,b) {
+  if (a.createdAt < b.createdAt)
+    return -1;
+  if (a.createdAt > b.createdAt)
+    return 1;
+  return 0;
+}
+
+reducedValue.sort(compare);
+
+console.log(reducedValue);
+
 let amount = reducedValue.map(item => item.amount );
 let createdAt = reducedValue.map(item => moment(item.createdAt).format('MMMM'));
 
+console.log(amount);
+console.log(createdAt);
 
 
 // var arr = [];
@@ -65,8 +82,6 @@ let createdAt = reducedValue.map(item => moment(item.createdAt).format('MMMM'));
 //            - months.indexOf(b);
 // });
 
-// console.log(amount);
-// console.log(createdAt);
 
 
 //
@@ -141,7 +156,7 @@ return (
     </div>
     <div className = "content-container">
           <h2>Line Example</h2>
-          <Line data={data} />
+          <Line data = {data} />
       </div>
   </div>
 )};
