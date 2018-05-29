@@ -65,8 +65,8 @@ let createdAt = reducedValue.map(item => moment(item.createdAt).format('MMMM'));
 //            - months.indexOf(b);
 // });
 
-console.log(amount);
-console.log(createdAt);
+// console.log(amount);
+// console.log(createdAt);
 
 
 //
@@ -109,7 +109,7 @@ console.log(createdAt);
   labels: createdAt,
   datasets: [
     {
-      label: 'My First dataset',
+      label: 'Expense vs Month',
       fill: false,
       lineTension: 0.1,
       backgroundColor: 'rgba(75,192,192,0.4)',

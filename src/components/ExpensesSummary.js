@@ -16,8 +16,8 @@ export const ExpensesSummary = ({ expenseCount, expensesTotal, incomeTotal}) => 
   const formattedLeftOverTotal = numeral(LeftOverTotal).format('$0,0.00');
   const zero = numeral(0).format('$0,0.00');
 
-  console.log(formattedLeftOverTotal);
-  console.log(zero);
+  // console.log(formattedLeftOverTotal);
+  // console.log(zero);
 
   return (
     <div className= "page-header">
