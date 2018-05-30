@@ -64,7 +64,7 @@ class ExpenseListFilters extends React.Component {
             <button className= "input-group__button" onClick = {(e) => {
               this.props.dispatch(setTextFilter(''));
               this.props.dispatch(sortByDate());
-            }}>Reset Filters</button>
+            }}>Reset</button>
           </div>
         </div>
       </div>
