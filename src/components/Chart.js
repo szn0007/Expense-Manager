@@ -1,28 +1,15 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import selectExpenses from '../selectors/expenses';
-import {Line} from 'react-chartjs-2';
+import {Line , Doughnut} from 'react-chartjs-2';
 import moment from 'moment';
+import selectLastSixMonthExpenses from '../selectors/last-six-months-expenses';
 
 
 const Chart = (props) => {
-  // console.log(props.expenses);
-//   const amount = props.expenses.map((expense) => {
-//     // console.log(expense.amount);
-//     // console.log(moment(expense.createdAt).format('MMMM'));
-//     return ;
-//   });
-// console.log(amount);
-//
-//   const createdAt = props.expenses.map((expense) => {
-//     const arr_createdAt = expense.createdAt;
-//     return moment(arr_createdAt).format('MMMM');
-//   });
-// console.log(createdAt);
-
 let reducedValue = props.expenses.reduce((acc, item) => {
     let index = acc.findIndex(accItem =>
-      moment(accItem.createdAt).format('MMM') === moment(item.createdAt).format('MMM'));
+      moment(accItem.createdAt).format('YYYYMMM') === moment(item.createdAt).format('YYYYMMM'));
     if(index < 0){
         acc.push({...item});
     } else {
@@ -30,7 +17,7 @@ let reducedValue = props.expenses.reduce((acc, item) => {
     }
     return acc;
 }, []);
-console.log(reducedValue);
+// console.log(reducedValue);
 
 
 function compare(a,b) {
@@ -43,81 +30,13 @@ function compare(a,b) {
 
 reducedValue.sort(compare);
 
-console.log(reducedValue);
+// console.log(reducedValue);
 
 let amount = reducedValue.map(item => item.amount );
 let createdAt = reducedValue.map(item => moment(item.createdAt).format('MMMM'));
 
-console.log(amount);
-console.log(createdAt);
-
-
-// var arr = [];
-
-// for (var i = 0; i < createdAt.length; i++) {
-//   arr[createdAt[i]] = amount[i];
-//   console.log(arr);
-// }
-
-// var months = ["January", "February", "March", "April", "May", "June",
-//   	        "July", "August", "September", "October", "November", "December"];
-//
-// var sorted_keys = Object.keys(arr).sort(function(a,b){
-//
-//   return months.indexOf(a)
-//            - months.indexOf(b);
-// });
-//
-// console.log(arr);
-
-// arr.sort(function(a,b){
-//   var aCD = a.createdAt;
-//
-//   return months.indexOf(a.key)
-//            - months.indexOf(b.key);
-// });
-//
-// createdAt.sort(function(a,b){
-//   return months.indexOf(a)
-//            - months.indexOf(b);
-// });
-
-
-
-//
-// var monthsHash = {
-//     "January": 1,
-//     "February": 2,
-//     "March": 3,
-//     "April": 4,
-//     "May": 5,
-//     "June": 6,
-//     "July": 7,
-//     "August": 8,
-//     "September": 9,
-//     "October": 10,
-//     "November": 11,
-//     "December": 12
-// };
-//
-// input.sort(function (a, b) {
-//     var a_month = a.split(":")[0],
-//         b_month = b.split(":")[0],
-//         a_month_rank = monthsHash[a_month],
-//         b_month_rank = monthsHash[b_month];
-//
-//     return a_month_rank - b_month_rank;
-// });
-//
-// console.log(input);
-//
-// function sortByMonth(arr) {
-//   var months = ["January", "February", "March", "April", "May", "June",
-//   	        "July", "August", "September", "October", "November", "December"];
-//   arr.sort(function(a, b){
-//       return months.indexOf(a.values.Month.displayValue)
-//            - months.indexOf(b.values.Month.displayValue);
-//   });
+// console.log(amount);
+// console.log(createdAt);
 
 
   const data = {
@@ -155,7 +74,6 @@ return (
         </div>
     </div>
     <div className = "content-container">
-          <h2>Line Example</h2>
           <Line data = {data} />
       </div>
   </div>
@@ -163,8 +81,8 @@ return (
 
 const mapStateToProps = (state) => {
   return {
-    // expenses : selectExpenses(state.expenses, state.filters)
-    expenses : state.expenses
+    expenses : selectLastSixMonthExpenses(state.expenses, state.filters)
+    // expenses : state.expenses
   };
 }
 
